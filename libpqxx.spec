@@ -1,12 +1,12 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	2.3.0
+Version:	2.4.0
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	ftp://gborg.postgresql.org/pub/libpqxx/stable/%{name}-%{version}.tar.gz
-# Source0-md5:	42a1b2c737a4257fd1c044026f04d9ca
+# Source0-md5:	d7368eec9e8e929a2d106cde1d9b6a22
 URL:		http://gborg.postgresql.org/project/libpqxx/projdisplay.php
 BuildRequires:	libstdc++-devel
 BuildRequires:	postgresql-devel >= 7.4.2
