@@ -1,4 +1,3 @@
-
 Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
@@ -20,21 +19,21 @@ Pakiet ten zawiera biblioteki dla interfejsu C++ do PostgreSQL.
 %package devel
 Summary:	C++ interface to PostgreSQL - development part
 Summary(pl):	Interfejs C++ do PostgreSQL - czê¶æ programistyczna
+Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	postgresql-devel
-Group:		Development/Libraries
 
 %description devel
-This package includes library and header files for C++ interface.
+This package includes header files for C++ interface.
 
 %description devel -l pl
-Pakiet ten zawiera biblioteki i pliki nag³ówkowe dla interfejsu C++.
+Pakiet ten zawiera pliki nag³ówkowe dla interfejsu C++.
 
 %package static
 Summary:	C++ interface to PostgreSQL - static libraries
 Summary(pl):	Interfejs C++ do PostgreSQL - biblioteki statyczne
-Requires:	%{name}-devel = %{version}
 Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
 
 %description static
 This package includes static library for interface C++.
@@ -45,11 +44,11 @@ Pakiet ten zawiera biblioteki statyczne dla interfejsu C++.
 %package examples
 Summary:	C++ interface to PostgreSQL - examples
 Summary(pl):	Interfejs C++ do PostgreSQL - przyk³adowe programy
-Requires:	%{name}-devel = %{version}
 Group:		Documentation
+Requires:	%{name}-devel = %{version}
 
 %description examples
-This package includes examples for interface C++.
+This package includes examples for C++ interface.
 
 %description examples -l pl
 Pakiet ten zawiera przyk³adowe programy dla interfejsu C++.
