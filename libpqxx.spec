@@ -1,3 +1,4 @@
+
 Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
@@ -18,7 +19,7 @@ Pakiet ten zawiera biblioteki dla interfejsu C++ do PostgreSQL.
 
 %package devel
 Summary:	C++ interface to PostgreSQL - development part
-Summary(pl):	Interfejs C++ do PostgreSQL - czePae programistyczna
+Summary(pl):	Interfejs C++ do PostgreSQL - czê¶æ programistyczna
 Requires:	%{name} = %{version}
 Requires:	postgresql-devel
 Group:		Development/Libraries
@@ -62,10 +63,10 @@ Pakiet ten zawiera przyk³adowe programy dla interfejsu C++.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
 cp -a test/test* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
