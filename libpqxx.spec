@@ -1,12 +1,12 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	2.4.2
+Version:	2.4.3
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	ftp://gborg.postgresql.org/pub/libpqxx/stable/%{name}-%{version}.tar.gz
-# Source0-md5:	f58b366c1a84ed838d76b0febee36e1a
+# Source0-md5:	367f3927715a7d1ae8dea2551bedd925
 URL:		http://gborg.postgresql.org/project/libpqxx/projdisplay.php
 BuildRequires:	libstdc++-devel
 BuildRequires:	postgresql-devel >= 7.4.2
@@ -86,9 +86,6 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 ./libtool --mode=install install tools/rmlo $RPM_BUILD_ROOT%{_bindir}
 
 cp -a test/test* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-doc
-cp -arv doc/html/{Reference,Tutorial} $RPM_BUILD_ROOT%{_docdir}/%{name}-doc
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -112,9 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(644,root,root,755)
-%docdir %{_docdir}/%{name}-doc
-%{_docdir}/%{name}-doc/Tutorial/*
-%{_docdir}/%{name}-doc/Reference/*
+%doc doc/html/{Reference,Tutorial}
 
 %files static
 %defattr(644,root,root,755)
