@@ -9,7 +9,7 @@ Source0:	ftp://gborg.postgresql.org/pub/libpqxx/stable/%{name}-%{version}.tar.gz
 # Source0-md5:	1027218388f64f62213c6c7e4111c3e9
 URL:		http://gborg.postgresql.org/project/libpqxx/projdisplay.php
 BuildRequires:	libstdc++-devel
-BuildRequires:	postgresql-devel
+BuildRequires:	postgresql-devel >= 7.4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,6 +56,18 @@ This package includes examples for C++ interface.
 %description examples -l pl
 Pakiet ten zawiera przyk³adowe programy dla interfejsu C++.
 
+%package doc
+Summary:	C++ interface to PostgreSQL - documentation
+Summary(pl):	Interfejs C++ do PostgreSQL - dokumentacja
+Group:		Documentation
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description doc
+This package includes documentation for C++ interface.
+
+%description doc -l pl
+Pakiet ten zawiera dokumentacjê dla interfejsu C++.
+
 %prep
 %setup -q
 
@@ -75,6 +87,9 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 ./libtool --mode=install install tools/rmlo $RPM_BUILD_ROOT%{_bindir}
 
 cp -a test/test* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install -d $RPM_BUILD_ROOT%{_docdir}/%{name}-doc
+cp -arv doc/html/{Reference,Tutorial} $RPM_BUILD_ROOT%{_docdir}/%{name}-doc
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -96,6 +111,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libpqxx.*la
 %{_includedir}/pqxx
 %{_pkgconfigdir}/*.pc
+
+%files doc
+%defattr(644,root,root,755)
+%docdir %{_docdir}/%{name}-doc
+%{_docdir}/%{name}-doc/Tutorial/*
+%{_docdir}/%{name}-doc/Reference/*
 
 %files static
 %defattr(644,root,root,755)
