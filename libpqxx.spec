@@ -1,13 +1,14 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	2.1.3
+Version:	2.2.0
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	ftp://gborg.postgresql.org/pub/libpqxx/stable/%{name}-%{version}.tar.gz
-# Source0-md5:	848d0e43efe0afc009e3374bb043c107
+# Source0-md5:	fc01302e707a2d69f5dab163ee39bce7
 URL:		http://gborg.postgresql.org/project/libpqxx/projdisplay.php
+BuildRequires:	libstdc++-devel
 BuildRequires:	postgresql-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,7 +22,8 @@ Pakiet ten zawiera biblioteki dla interfejsu C++ do PostgreSQL.
 Summary:	C++ interface to PostgreSQL - development part
 Summary(pl):	Interfejs C++ do PostgreSQL - czê¶æ programistyczna
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
 Requires:	postgresql-devel
 
 %description devel
@@ -34,7 +36,7 @@ Pakiet ten zawiera pliki nag³ówkowe dla interfejsu C++.
 Summary:	C++ interface to PostgreSQL - static libraries
 Summary(pl):	Interfejs C++ do PostgreSQL - biblioteki statyczne
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package includes static library for interface C++.
@@ -46,7 +48,7 @@ Pakiet ten zawiera biblioteki statyczne dla interfejsu C++.
 Summary:	C++ interface to PostgreSQL - examples
 Summary(pl):	Interfejs C++ do PostgreSQL - przyk³adowe programy
 Group:		Documentation
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description examples
 This package includes examples for C++ interface.
@@ -58,7 +60,8 @@ Pakiet ten zawiera przyk³adowe programy dla interfejsu C++.
 %setup -q
 
 %build
-%configure
+%configure \
+	--enable-shared
 %{__make}
 
 %install
@@ -66,7 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	pqxxbenchdir=%{_bindir} \
+	rmlodir=%{_bindir}
 
 cp -a test/test* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -79,10 +84,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
+%attr(755,root,root) %{_bindir}/pqxxbench
+%attr(755,root,root) %{_bindir}/rmlo
 %attr(755,root,root) %{_libdir}/libpqxx-*.so
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/pqxx-config
 %attr(755,root,root) %{_libdir}/libpqxx.so
 %{_libdir}/libpqxx.*la
 %{_includedir}/pqxx
