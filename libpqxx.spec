@@ -6,6 +6,7 @@ Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	ftp://gborg.postgresql.org/pub/libpqxx/stable/%{name}-%{version}.tar.gz
+# Source0-md5:	3c0f2b5a89ece20e7a84808c594dd7aa
 URL:		http://gborg.postgresql.org/project/libpqxx/projdisplay.php
 BuildRequires:	postgresql-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
