@@ -1,20 +1,22 @@
---- libpqxx-2.5.5/configure.ac.orig	2006-03-21 19:59:08.000000000 +0100
-+++ libpqxx-2.5.5/configure.ac	2006-03-21 20:04:24.000000000 +0100
-@@ -50,7 +50,7 @@
- AC_LANG(C++)
- 
- # Add options to compiler command line, if compiler accepts it
--function add_compiler_opts() {
-+add_compiler_opts() {
- 	for option in $* ; do
- 		SAVE_CXXFLAGS="$CXXFLAGS"
- 		CXXFLAGS="$CXXFLAGS $option"
-@@ -212,7 +212,7 @@
+--- libpqxx-2.6.6/configure.ac.in.orig	2006-05-27 10:44:40.000000000 +0200
++++ libpqxx-2.6.6/configure.ac.in	2006-05-28 17:39:28.000000000 +0200
+@@ -247,7 +247,7 @@
  
  AC_SUBST(with_postgres_lib)
  AC_SUBST(with_postgres_include)
--POSTGRES_LIB="-L${with_postgres_lib} -R${with_postgres_lib} -lpq"
-+POSTGRES_LIB="-L${with_postgres_lib} -lpq"
+-POSTGRES_LIB="-R${with_postgres_lib}"
++POSTGRES_LIB=
+ AC_SUBST(POSTGRES_LIB)
+ POSTGRES_INCLUDE="-I${with_postgres_include}"
+ AC_SUBST(POSTGRES_INCLUDE)
+--- libpqxx-2.6.6/configure.ac.orig	2006-05-27 12:46:32.000000000 +0200
++++ libpqxx-2.6.6/configure.ac	2006-05-28 17:39:34.000000000 +0200
+@@ -247,7 +247,7 @@
+ 
+ AC_SUBST(with_postgres_lib)
+ AC_SUBST(with_postgres_include)
+-POSTGRES_LIB="-R${with_postgres_lib}"
++POSTGRES_LIB=
  AC_SUBST(POSTGRES_LIB)
  POSTGRES_INCLUDE="-I${with_postgres_include}"
  AC_SUBST(POSTGRES_INCLUDE)
