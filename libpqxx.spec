@@ -1,13 +1,12 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	2.6.7
+Version:	2.6.8
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://thaiopensource.org/download/software/libpqxx/%{name}-%{version}.tar.gz
-# Source0-md5:	f66b41065a5e3103a348d378320999e4
-Patch0:		%{name}-mktemp.patch
+# Source0-md5:	cb818ca7698955bcea8b7ba1b7962811
 URL:		http://thaiopensource.org/development/libpqxx/
 BuildRequires:	autoconf
 BuildRequires:	libstdc++-devel
@@ -72,7 +71,6 @@ Pakiet ten zawiera dokumentacjê dla interfejsu C++.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__autoconf}
