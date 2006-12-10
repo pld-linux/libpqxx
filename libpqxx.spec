@@ -2,7 +2,7 @@ Summary:	C++ interface to PostgreSQL
 Summary(pl):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
 Version:	2.6.8
-Release:	2
+Release:	3
 License:	BSD
 Group:		Libraries
 Source0:	http://thaiopensource.org/download/software/libpqxx/%{name}-%{version}.tar.gz
