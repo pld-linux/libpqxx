@@ -1,5 +1,5 @@
 Summary:	C++ interface to PostgreSQL
-Summary(pl.UTF-8):   Interfejs C++ do PostgreSQL
+Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
 Version:	2.6.8
 Release:	3
@@ -21,7 +21,7 @@ Pakiet ten zawiera biblioteki dla interfejsu C++ do PostgreSQL.
 
 %package devel
 Summary:	C++ interface to PostgreSQL - development part
-Summary(pl.UTF-8):   Interfejs C++ do PostgreSQL - część programistyczna
+Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - część programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -35,7 +35,7 @@ Pakiet ten zawiera pliki nagłówkowe dla interfejsu C++.
 
 %package static
 Summary:	C++ interface to PostgreSQL - static libraries
-Summary(pl.UTF-8):   Interfejs C++ do PostgreSQL - biblioteki statyczne
+Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - biblioteki statyczne
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -47,7 +47,7 @@ Pakiet ten zawiera biblioteki statyczne dla interfejsu C++.
 
 %package examples
 Summary:	C++ interface to PostgreSQL - examples
-Summary(pl.UTF-8):   Interfejs C++ do PostgreSQL - przykładowe programy
+Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - przykładowe programy
 Group:		Documentation
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -59,7 +59,7 @@ Pakiet ten zawiera przykładowe programy dla interfejsu C++.
 
 %package doc
 Summary:	C++ interface to PostgreSQL - documentation
-Summary(pl.UTF-8):   Interfejs C++ do PostgreSQL - dokumentacja
+Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - dokumentacja
 Group:		Documentation
 Requires:	%{name}-devel = %{version}-%{release}
 
