@@ -1,16 +1,16 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	2.6.9
-Release:	2
+Version:	4.0
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://thaiopensource.org/download/software/libpqxx/%{name}-%{version}.tar.gz
-# Source0-md5:	0b0c64af41dfdeea8556dc359994e1cb
-URL:		http://thaiopensource.org/development/libpqxx/
+Source0:	http://pqxx.org/download/software/libpqxx/%{name}-%{version}.tar.gz
+# Source0-md5:	bd7541f858400a96cbe2a48cb342ad0e
+URL:		http://pqxx.org/
 BuildRequires:	autoconf
 BuildRequires:	libstdc++-devel
-BuildRequires:	postgresql-devel >= 7.4.2
+BuildRequires:	postgresql-devel >= 8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -97,7 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README*
 %attr(755,root,root) %{_bindir}/rmlo
 %attr(755,root,root) %{_libdir}/libpqxx-*.so
 
