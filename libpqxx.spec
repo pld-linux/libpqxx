@@ -8,7 +8,7 @@ Group:		Libraries
 Source0:	http://pqxx.org/download/software/libpqxx/%{name}-%{version}.tar.gz
 # Source0-md5:	bd7541f858400a96cbe2a48cb342ad0e
 URL:		http://pqxx.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	libstdc++-devel
 BuildRequires:	postgresql-devel >= 8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -105,9 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pqxx-config
 %attr(755,root,root) %{_libdir}/libpqxx.so
-%{_libdir}/libpqxx.*la
+%{_libdir}/libpqxx.la
 %{_includedir}/pqxx
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libpqxx.pc
 
 %files doc
 %defattr(644,root,root,755)
