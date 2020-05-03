@@ -1,16 +1,17 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	4.0.1
-Release:	3
+Version:	7.0.6
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://pqxx.org/download/software/libpqxx/%{name}-%{version}.tar.gz
-# Source0-md5:	6ea888b9ba85dd7cef1b182dc5f223a2
+#Source0Download: https://github.com/jtv/libpqxx/releases
+Source0:	https://github.com/jtv/libpqxx/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	d89df9f71643519ec3bfa54505330e24
 URL:		http://pqxx.org/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	libstdc++-devel
-BuildRequires:	postgresql-devel >= 8.0
+BuildRequires:	libstdc++-devel >= 6:7
+BuildRequires:	postgresql-devel >= 9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,8 +25,8 @@ Summary:	C++ interface to PostgreSQL - development part
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - część programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libstdc++-devel
-Requires:	postgresql-devel
+Requires:	libstdc++-devel >= 6:7
+Requires:	postgresql-devel >= 9.1
 
 %description devel
 This package includes header files for C++ interface.
@@ -80,7 +81,7 @@ Pakiet ten zawiera dokumentację dla interfejsu C++.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_examplesdir}/%{name}-%{version}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -88,6 +89,8 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 ./libtool --mode=install install tools/rmlo $RPM_BUILD_ROOT%{_bindir}
 
 cp -a test/test* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libpqxx.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,15 +100,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README*
+%doc AUTHORS COPYING NEWS README*
 %attr(755,root,root) %{_bindir}/rmlo
-%attr(755,root,root) %{_libdir}/libpqxx-*.so
+%attr(755,root,root) %{_libdir}/libpqxx-7.0.so
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/pqxx-config
 %attr(755,root,root) %{_libdir}/libpqxx.so
-%{_libdir}/libpqxx.la
 %{_includedir}/pqxx
 %{_pkgconfigdir}/libpqxx.pc
 
