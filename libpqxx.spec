@@ -1,17 +1,18 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	7.0.6
+Version:	7.8.1
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/jtv/libpqxx/releases
 Source0:	https://github.com/jtv/libpqxx/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	d89df9f71643519ec3bfa54505330e24
-URL:		http://pqxx.org/
-BuildRequires:	autoconf >= 2.59
+# Source0-md5:	ab70c9e8c00ac970177c592708f7f39c
+URL:		https://pqxx.org/
+BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel >= 6:7
-BuildRequires:	postgresql-devel >= 9.1
+BuildRequires:	pkgconfig
+BuildRequires:	postgresql-devel >= 10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,7 +27,7 @@ Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - część programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel >= 6:7
-Requires:	postgresql-devel >= 9.1
+Requires:	postgresql-devel >= 10
 
 %description devel
 This package includes header files for C++ interface.
@@ -74,7 +75,10 @@ Pakiet ten zawiera dokumentację dla interfejsu C++.
 %setup -q
 
 %build
-%{__autoconf}
+# libpqxx needs at least C++17, gcc 10 defaulted to C++14
+%if %(echo %{cc_version} | cut -d. -f 1) < 11
+CXXFLAGS="%{rpmcxxflags} -std=c++17"
+%endif
 %configure \
 	--enable-shared
 %{__make}
@@ -102,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING NEWS README*
 %attr(755,root,root) %{_bindir}/rmlo
-%attr(755,root,root) %{_libdir}/libpqxx-7.0.so
+%attr(755,root,root) %{_libdir}/libpqxx-7.8.so
 
 %files devel
 %defattr(644,root,root,755)
@@ -112,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(644,root,root,755)
-%doc doc/html/{Reference,Tutorial}
+%doc doc/html/*.{css,html,js,png}
 
 %files static
 %defattr(644,root,root,755)
