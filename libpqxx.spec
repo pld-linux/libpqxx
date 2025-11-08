@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	apidocs		# API documentation
+
 Summary:	C++ interface to PostgreSQL
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
@@ -9,11 +13,12 @@ Group:		Libraries
 Source0:	https://github.com/jtv/libpqxx/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	ab70c9e8c00ac970177c592708f7f39c
 URL:		https://pqxx.org/
-BuildRequires:	doxygen
+%{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel >= 10
 BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -83,7 +88,8 @@ Pakiet ten zawiera dokumentację dla interfejsu C++.
 CXXFLAGS="%{rpmcxxflags} -std=c++17"
 %endif
 %configure \
-	--enable-shared
+	--enable-shared \
+	%{__enable_disable apidocs documentation}
 %{__make}
 
 %install
@@ -117,9 +123,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/pqxx
 %{_pkgconfigdir}/libpqxx.pc
 
+%if %{with apidocs}
 %files doc
 %defattr(644,root,root,755)
 %doc doc/html/*.{css,html,js,png}
+%endif
 
 %files static
 %defattr(644,root,root,755)
