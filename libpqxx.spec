@@ -13,6 +13,7 @@ BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel >= 10
+BuildRequires:	rpm-build >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -52,6 +53,7 @@ Summary:	C++ interface to PostgreSQL - examples
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - przykładowe programy
 Group:		Documentation
 Requires:	%{name}-devel = %{version}-%{release}
+BuildArch:	noarch
 
 %description examples
 This package includes examples for C++ interface.
@@ -64,6 +66,7 @@ Summary:	C++ interface to PostgreSQL - documentation
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL - dokumentacja
 Group:		Documentation
 Requires:	%{name}-devel = %{version}-%{release}
+BuildArch:	noarch
 
 %description doc
 This package includes documentation for C++ interface.
