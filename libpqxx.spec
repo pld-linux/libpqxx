@@ -6,13 +6,13 @@
 Summary:	C++ interface to PostgreSQL
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
 Name:		libpqxx
-Version:	7.8.1
+Version:	7.10.3
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/jtv/libpqxx/releases
 Source0:	https://github.com/jtv/libpqxx/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	ab70c9e8c00ac970177c592708f7f39c
+# Source0-md5:	aad696c5f4a25a41e72b820772fd00e8
 URL:		https://pqxx.org/
 %{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	libstdc++-devel >= 6:7
@@ -117,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING NEWS README*
 %attr(755,root,root) %{_bindir}/rmlo
-%attr(755,root,root) %{_libdir}/libpqxx-7.8.so
+%attr(755,root,root) %{_libdir}/libpqxx-7.10.so
 
 %files devel
 %defattr(644,root,root,755)
@@ -128,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files doc
 %defattr(644,root,root,755)
-%doc doc/html/*.{css,html,js,png}
+%doc doc/doxygen-html/*.{css,html,js,png}
 %endif
 
 %if %{with static_libs}
