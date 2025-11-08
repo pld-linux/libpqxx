@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# API documentation
+%bcond_without	static_libs	# static libraries
 
 Summary:	C++ interface to PostgreSQL
 Summary(pl.UTF-8):	Interfejs C++ do PostgreSQL
@@ -89,6 +90,7 @@ CXXFLAGS="%{rpmcxxflags} -std=c++17"
 %endif
 %configure \
 	--enable-shared \
+	%{__enable_disable static_libs static} \
 	%{__enable_disable apidocs documentation}
 %{__make}
 
@@ -129,9 +131,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/html/*.{css,html,js,png}
 %endif
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libpqxx.a
+%endif
 
 %files examples
 %defattr(644,root,root,755)
